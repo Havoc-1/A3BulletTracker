@@ -1,21 +1,37 @@
-//Renders the tracer in 3D space 
+//Convert to preprocess, hpp, or merge with init
 
-//TO DO 
-//remove DrawIcon3d | nil array its trying to draw
+/* 
+    Author: [SGC] Xephros, [DMCL] Keystone
+
+    Function to call in Draw3D MissionEventHandler to draw bullet trajectory and impact position from shooter.
+
+    Arguments:
+        0: Unit <OBJECT> (Optional) - Player unit to grab positional data.
+        1: Text Size <NUMBER> (Optional) - Size of text for distance of impact to shooter
+        2: Icon Size <NUMBER> (Optional) - Size of icon for impact position.
+        3: Angle <NUMBER> (Optional) - Rotation angle of icon.
+    
+    Examples:
+        [] call XEPKEY_fnc_tracerDraw;
+    
+    Return Value: None
+ */
+
 XK_tracerDraw = {
     params [["_unit",player],["_textSize",0.03],["_iconSize",0.3],["_ang",0]];
     private _bulletPos = _unit getVariable "XK_bulletPosSpotter";
     if (isNil "_bulletPos") exitWith {};
     if (count _bulletPos == 0) exitWith {};
-    diag_log format ["[tracerDraw] bulletPos: %1",_bulletPos];
+
+    //Get Bullet Impact position
     private _pos = _unit getVariable "XK_Impact";
     if (isNil "_pos") exitWith {};
-    //private _color = _unit getVariable "XK_Color";
+
     private _color = [1,1,0,1];
     private _text = format ["%1m",round (player distance _pos)];
-    //drawing circle
+    
+    //Draw Bullet Trajectory and Impact
     drawIcon3D ["\A3\ui_f\data\map\markers\military\circle_CA.paa", _color, _pos, _iconSize, _iconSize, _ang, _text, 1, _textSize, "TahomaB","center",true,0,0.003];
-    //drawing line 
     {
         private _indexes = _x;
         {
