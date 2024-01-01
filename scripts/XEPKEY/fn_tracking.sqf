@@ -63,7 +63,7 @@ private _ehShooter = _uShooter addEventHandler ["Fired", {
             (_this select 0) params ["_spotter","_shooter","_proj","_lifetime","_maxDist","_minRange","_bulletPos","_impactOld"];
             private _impactNew = _spotter getVariable ["XK_Impact", [0,0,0]];
             //Removes PFH if Trace is finished
-            if (!alive _spotter || !alive _proj || getPosATL _proj select 2 < 0.05 || _shooter distance _proj >= _maxDist || _spotter distance _shooter >= _minRange ||
+            if (!alive _spotter || !alive _proj || _shooter distance _proj >= _maxDist || _spotter distance _shooter >= _minRange ||
             (_impactOld select 0 != _impactNew select 0 ||
             _impactOld select 1 != _impactNew select 1 ||
             _impactOld select 2 != _impactNew select 2)
@@ -95,8 +95,7 @@ private _ehShooter = _uShooter addEventHandler ["Fired", {
                 };                    
             } else {
                 _bulletPos pushback (getPos _proj);
-                if (count _bulletPos >= 15) then {_bulletPos deleteAt 0};
-                private _impactNew = _spotter getVariable ["XK_Impact", [0,0,0]];
+                if (count _bulletPos >= 25) then {_bulletPos deleteAt 0};
             };
         },
         _int,
