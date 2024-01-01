@@ -26,12 +26,13 @@ XK_tracerDraw = {
     //Get Bullet Impact position
     private _pos = _unit getVariable "XK_Impact";
     if (isNil "_pos") exitWith {};
-
-    private _color = [1,1,0,1];
+    private _light = (getLighting select 1)/10;
+    private _color = [(getLighting select 0 select 0),(getLighting select 0 select 1),(getLighting select 0 select 2),_light];
     private _text = format ["%1m",round (player distance _pos)];
     
     //Draw Bullet Trajectory and Impact
-    drawIcon3D ["\A3\ui_f\data\map\markers\military\circle_CA.paa", _color, _pos, _iconSize, _iconSize, _ang, _text, 1, _textSize, "TahomaB","center",true,0,0.003];
+    drawIcon3D ["\A3\ui_f\data\map\markers\military\circle_CA.paa", _color, _pos, _iconSize, _iconSize, _ang, _text, 0, _textSize, "TahomaB","center",true,0,0.003];
+    if (_light < 0.3) exitWith {};
     {
         private _indexes = _x;
         {
