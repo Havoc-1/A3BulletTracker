@@ -1,4 +1,4 @@
-//Interact with scope 
+/* //Interact with scope 
 // Remvoe spotter only visible when spotter is active
 
 _action_BecomeSpotter = ["trackBullets","Become Spotter","a3\ui_f\data\igui\cfg\simpletasks\types\run_ca.paa",
@@ -29,4 +29,4 @@ _action_RemoveSpotter = ["untrackBullets","Unassign Spotter","a3\ui_f\data\igui\
 ] call ace_interact_menu_fnc_createAction;
 
 ["CAManBase", 0, ["ACE_MainActions"], _action_BecomeSpotter,true] call ace_interact_menu_fnc_addActionToClass;
-["CAManBase", 0, ["ACE_MainActions"], _action_RemoveSpotter,true] call ace_interact_menu_fnc_addActionToClass;
+["CAManBase", 0, ["ACE_MainActions"], _action_RemoveSpotter,true] call ace_interact_menu_fnc_addActionToClass; */

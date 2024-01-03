@@ -32,9 +32,28 @@ _uShooter setVariable ["XK_minRange",_minRange];
 private _ehShooter = _uShooter addEventHandler ["Fired", {
     params ["_shooter", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_proj"];
     private _spotter = _shooter getVariable "XK_Spotter";
-    if (isNil "_spotter") exitWith {diag_log "[XK_Trace] [Shooter EH] No Spotter Found, exiting EH"};
-    if (!alive _spotter) exitWith {diag_log "[XK_Trace] [Shooter EH] Spotter is dead, exiting EH"};
-
+    
+    //If no spotter, remove EH
+    if (isNil "_spotter") exitWith {
+        diag_log "[XK_Trace] [Shooter EH] No Spotter Found, exiting EH";
+        _shooter removeEventHandler [_thisEvent, _thisEventHandler];
+        _shooter setVariable ["XK_Spotter", nil];
+    };
+    //If dead, remove EH
+    if (!alive _spotter) exitWith {
+        diag_log "[XK_Trace] [Shooter EH] Spotter is dead, exiting EH";
+        _shooter removeEventHandler [_thisEvent, _thisEventHandler];
+        _shooter setVariable ["XK_Spotter", nil];
+    };
+    //Assuming spotter alive, spotter var is missing 
+    private _spotterVar = _spotter getVariable "XK_Spotter";
+    if (isNil "_spotterVar") exitWith {
+        _shooter setVariable ["XK_Spotter", nil];
+    };
+    if (_spotterVar != _shooter) then {
+        _shooter removeEventHandler [_thisEvent, _thisEventHandler];
+        _shooter setVariable ["XK_Spotter", nil];
+    };
     private _minRange = _shooter getVariable "XK_minRange";
     if (isNil "_proj" || isNull _proj) exitWith {diag_log "[XK_Trace] [Shooter EH] Projectile not found."};
     if (_shooter distance _spotter >= _minRange) exitWith {diag_log "[XK_Trace] [Shooter EH] Spotter is too far away from shooter, exiting EH."};
@@ -102,7 +121,8 @@ private _ehShooter = _uShooter addEventHandler ["Fired", {
         [_spotter,_shooter,_proj,_lifetime,_maxDist,_minRange,_bulletPos,_impactOld]
     ] call CBA_fnc_addPerFrameHandler;
     diag_log "[XK_Trace] [Tracking PFH] PFH started";
-
+    
 }];
-_uShooter setVariable ["XK_traceEH",_ehShooter];
+_uShooter setVariable ["XK_traceEH",_ehShooter, true];
+diag_log format ["[XK_Trace] [fn_tracking] Index : %1",(_uShooter getVariable "XK_traceEH")];
 diag_log format ["[XK_Trace] [fn_tracking] Assigned Shooter: %1, Assigned Spotter: %2", _uShooter,_uSpotter];
