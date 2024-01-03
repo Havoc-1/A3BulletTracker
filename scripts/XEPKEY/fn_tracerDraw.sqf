@@ -7,9 +7,10 @@
 
     Arguments:
         0: Unit <OBJECT> (Optional) - Player unit to grab positional data.
-        1: Text Size <NUMBER> (Optional) - Size of text for distance of impact to shooter
-        2: Icon Size <NUMBER> (Optional) - Size of icon for impact position.
-        3: Angle <NUMBER> (Optional) - Rotation angle of icon.
+        1: Minimum Light <NUMBER> (Optional) - Minimum ambient light (refer to getLighting) to hide tracing.
+        2: Text Size <NUMBER> (Optional) - Size of text for distance of impact to shooter
+        3: Icon Size <NUMBER> (Optional) - Size of icon for impact position.
+        4: Angle <NUMBER> (Optional) - Rotation angle of icon.
     
     Examples:
         [] call XEPKEY_fnc_tracerDraw;
@@ -18,9 +19,8 @@
  */
 
 XK_tracerDraw = {
-    params [["_unit",player],["_textSize",0.03],["_iconSize",0.3],["_ang",0]];
-    private _bulletPos = _unit getVariable "XK_bulletPosSpotter";
-    if (isNil "_bulletPos") exitWith {};
+    params [["_unit",player],["_minLight",0.3],["_textSize",0.03],["_iconSize",0.3],["_ang",0]];
+    private _bulletPos = _unit getVariable ["XK_bulletPosSpotter",[]];
     if (count _bulletPos == 0) exitWith {};
 
     //Get Bullet Impact position
@@ -32,7 +32,7 @@ XK_tracerDraw = {
     
     //Draw Bullet Trajectory and Impact
     drawIcon3D ["\A3\ui_f\data\map\markers\military\circle_CA.paa", _color, _pos, _iconSize, _iconSize, _ang, _text, 0, _textSize, "TahomaB","center",true,0,0.003];
-    if (_light < 0.3) exitWith {};
+    if (_light < _minLight) exitWith {};
     {
         private _indexes = _x;
         {
