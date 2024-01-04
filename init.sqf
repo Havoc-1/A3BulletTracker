@@ -29,10 +29,10 @@ _action_BecomeSpotter = ["trackBullets","Become Spotter","a3\ui_f\data\gui\rsc\r
 _removeSpotterModifier = {
   params ["_target", "_player", "_params", "_actionData"];
   diag_log format ["[XK_TRACE] [ACE-SELF] [%1, %2, %3]", _target, _player, _params];
-  _actionData set [1, format ["Unassign Spotter from: %1", name (_target getVariable "XK_Spotter")]];
+  _actionData set [1, format ["Stop spotting for: %1", name (_target getVariable "XK_Spotter")]];
 };
 
-_action_RemoveSpotter = ["untrackBullets","Unassign Spotter","ca\ui\data\marker_x_ca.paa",
+_action_RemoveSpotter = ["untrackBullets","Unassign Spotter",["ca\ui\data\marker_x_ca.paa","#FF0000"],
   {     
     params ["_target", "_player", "_params"];
     diag_log format ["[XK_Trace] [ACE-INTERACT] Unassigned from: %1", _target];    
