@@ -14,7 +14,7 @@ _action_BecomeSpotter = ["trackBullets","Become Spotter","a3\ui_f\data\gui\rsc\r
     diag_log format ["[XK_Trace] [ACE-INTERACT] Assigned to %1 | Spotter is : %2", _target, _player];
     _target setVariable ["XK_Spotter", _player];
     _player setVariable ["XK_Spotter", _target];
-    [_target, _player] execVM "scripts\XEPKEY\fn_tracking.sqf";
+    [_target] execVM "scripts\XEPKEY\fn_tracking.sqf";
     //call sqf 
     //put checks if alive 
     //delete previous spotters later if dead etc. 
