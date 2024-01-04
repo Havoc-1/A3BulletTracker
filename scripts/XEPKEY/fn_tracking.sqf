@@ -71,10 +71,10 @@ private _ehShooter = _shooter addEventHandler ["Fired", {
     private _impactOld = _spotter getVariable ["XK_Impact", [0,0,0]];
     [
         {
-            (_this select 0) params ["_spotter","_shooter","_proj","_lifetime","_maxDist","_minRange","_bulletPos","_impactOld"];
+            (_this select 0) params ["_spotter","_shooter","_proj","_lifetime","_maxDist","_minRange","_bulletPos","_impactOld","_maxIndex"];
             private _impactNew = _spotter getVariable ["XK_Impact", [0,0,0]];
             //Removes PFH if Trace is finished
-            if (!alive _spotter || !alive _proj || _shooter distance _proj >= _maxDist || _spotter distance _shooter >= _minRange ||_impactOld isEqualTo _impactNew) then {
+            if (!alive _spotter || !alive _proj || _shooter distance _proj >= _maxDist || _spotter distance _shooter >= _minRange || !(_impactOld isEqualTo _impactNew)) then {
                 [_this select 1] call CBA_fnc_removePerFrameHandler;
 
                 //Diag logs
@@ -88,13 +88,15 @@ private _ehShooter = _shooter addEventHandler ["Fired", {
                     _bulletArray pushback _bulletPos;
                     _spotter setVariable ["XK_bulletPosSpotter",_bulletArray];
                     diag_log format ["[XK_Trace] [Tracking PFH] bulletPos Indexes: %1, assigned to %2", count _bulletPos,_spotter];
-                    [{
+                    [
+                        {
                             params ["_spotter"];
                             if !(alive _spotter) exitWith {diag_log "[XK_Trace] [Tracking PFH Lifetime] Spotter is dead, bulletArray not updated."};
                             private _bulletArray = _spotter getVariable ["XK_bulletPosSpotter",[]];
                             _bulletArray deleteAt 0;
                             _spotter setVariable ["XK_bulletPosSpotter",_bulletArray];
-                        },[_spotter],
+                        },
+                        [_spotter],
                         _lifetime
                     ] call CBA_fnc_waitAndExecute;
                 };                    
@@ -104,7 +106,7 @@ private _ehShooter = _shooter addEventHandler ["Fired", {
             };
         },
         _int,
-        [_spotter,_shooter,_proj,_lifetime,_maxDist,_minRange,_bulletPos,_impactOld]
+        [_spotter,_shooter,_proj,_lifetime,_maxDist,_minRange,_bulletPos,_impactOld,_maxIndex]
     ] call CBA_fnc_addPerFrameHandler;
     diag_log "[XK_Trace] [Tracking PFH] PFH started";
     
