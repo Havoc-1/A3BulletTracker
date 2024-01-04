@@ -15,6 +15,10 @@ _action_BecomeSpotter = ["trackBullets","Become Spotter","a3\ui_f\data\gui\rsc\r
     _target setVariable ["XK_Spotter", _player];
     _player setVariable ["XK_Spotter", _target];
     [_target] execVM "scripts\XEPKEY\fn_tracking.sqf";
+
+    //Visual prompt
+    ["ace_common_displayTextStructured", [format ["%1 is now spotting for you",_player], 1.5, _target], [_target]] call CBA_fnc_targetEvent;
+
     //call sqf 
     //put checks if alive 
     //delete previous spotters later if dead etc. 
@@ -36,6 +40,9 @@ _action_RemoveSpotter = ["untrackBullets","Unassign Spotter","ca\ui\data\marker_
     params ["_target", "_player", "_params"];
     diag_log format ["[XK_Trace] [ACE-INTERACT] Unassigned from: %1", _target];    
     
+    //Visual prompt
+    ["ace_common_displayTextStructured", [format ["You are no longer spotting for %1", (_target getVariable "XK_Spotter")], 1.5, _player], [_player]] call CBA_fnc_targetEvent;
+
     _target setVariable ["XK_Spotter",nil];
     _target setVariable ["XK_Lifetime",nil];
     _target setVariable ["XK_Interval",nil];
@@ -53,7 +60,7 @@ _action_RemoveSpotter = ["untrackBullets","Unassign Spotter","ca\ui\data\marker_
   "",
   5,
   [false,false,false,false,false],
-  _modifierFunc
+  _removeSpotterModifier
 ] call ace_interact_menu_fnc_createAction;
 
 ["CAManBase", 0, ["ACE_MainActions"], _action_BecomeSpotter,true] call ace_interact_menu_fnc_addActionToClass;
