@@ -17,11 +17,8 @@ _action_BecomeSpotter = ["trackBullets","Become Spotter","a3\ui_f\data\gui\rsc\r
     [_target] execVM "scripts\XEPKEY\fn_tracking.sqf";
 
     //Visual prompt
-    ["ace_common_displayTextStructured", [format ["%1 is now spotting for you",_player], 1.5, _target], [_target]] call CBA_fnc_targetEvent;
+    ["ace_common_displayTextStructured", [format ["%1 is now spotting for you", name (_player getVariable "XK_Spotter")], 1.5, _target], [_target]] call CBA_fnc_targetEvent;
 
-    //call sqf 
-    //put checks if alive 
-    //delete previous spotters later if dead etc. 
   },
   {true},
   {},
@@ -32,7 +29,7 @@ _action_BecomeSpotter = ["trackBullets","Become Spotter","a3\ui_f\data\gui\rsc\r
 _removeSpotterModifier = {
   params ["_target", "_player", "_params", "_actionData"];
   diag_log format ["[XK_TRACE] [ACE-SELF] [%1, %2, %3]", _target, _player, _params];
-  _actionData set [1, format ["Unassign Spotter from: %1", (_target getVariable "XK_Spotter")]];
+  _actionData set [1, format ["Unassign Spotter from: %1", name (_target getVariable "XK_Spotter")]];
 };
 
 _action_RemoveSpotter = ["untrackBullets","Unassign Spotter","ca\ui\data\marker_x_ca.paa",
@@ -41,7 +38,7 @@ _action_RemoveSpotter = ["untrackBullets","Unassign Spotter","ca\ui\data\marker_
     diag_log format ["[XK_Trace] [ACE-INTERACT] Unassigned from: %1", _target];    
     
     //Visual prompt
-    ["ace_common_displayTextStructured", [format ["You are no longer spotting for %1", (_target getVariable "XK_Spotter")], 1.5, _player], [_player]] call CBA_fnc_targetEvent;
+    ["ace_common_displayTextStructured", [format ["You are no longer spotting for %1", name (_target getVariable "XK_Spotter")], 1.5, _player], [_player]] call CBA_fnc_targetEvent;
 
     _target setVariable ["XK_Spotter",nil];
     _target setVariable ["XK_Lifetime",nil];
@@ -52,8 +49,7 @@ _action_RemoveSpotter = ["untrackBullets","Unassign Spotter","ca\ui\data\marker_
     _player setVariable ["XK_bulletPosSpotter",nil];
   },
   {
-    private _varCheck = _player getVariable "XK_Spotter";
-    !isNil "_varCheck";
+    !isNull (_player getVariable ["XK_Spotter",objNull]);
   },
   {},
   [],
@@ -65,6 +61,3 @@ _action_RemoveSpotter = ["untrackBullets","Unassign Spotter","ca\ui\data\marker_
 
 ["CAManBase", 0, ["ACE_MainActions"], _action_BecomeSpotter,true] call ace_interact_menu_fnc_addActionToClass;
 ["CAManBase", 1, ["ACE_SelfActions"], _action_RemoveSpotter, true] call ace_interact_menu_fnc_addActionToClass;
-
-//Perhaps run initPlayerLocal code here for local only (maybe remoteExec for local?) for plug and play solution
-//see seb's briefing table 
