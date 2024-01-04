@@ -6,7 +6,7 @@ addMissionEventHandler ["Draw3D", {
 }];
 
 //Interact with scope 
-// Remvoe spotter only visible when spotter is active
+//Remove spotter only visible when spotter is active
 
 _action_BecomeSpotter = ["trackBullets","Become Spotter","a3\ui_f\data\gui\rsc\rscdisplayarsenal\binoculars_ca.paa",
   {     
@@ -14,7 +14,7 @@ _action_BecomeSpotter = ["trackBullets","Become Spotter","a3\ui_f\data\gui\rsc\r
     diag_log format ["[XK_Trace] [ACE-INTERACT] Assigned to %1 | Spotter is : %2", _target, _player];
     _target setVariable ["XK_Spotter", _player];
     _player setVariable ["XK_Spotter", _target];
-    [_target] execVM "scripts\XEPKEY\fn_tracking.sqf";
+    [_target, _player] execVM "scripts\XEPKEY\fn_tracking.sqf";
     //call sqf 
     //put checks if alive 
     //delete previous spotters later if dead etc. 
@@ -23,6 +23,13 @@ _action_BecomeSpotter = ["trackBullets","Become Spotter","a3\ui_f\data\gui\rsc\r
   {},
   []
 ] call ace_interact_menu_fnc_createAction;
+
+//To show who your unassigning yourself from
+_removeSpotterModifier = {
+  params ["_target", "_player", "_params", "_actionData"];
+  diag_log format ["[XK_TRACE] [ACE-SELF] [%1, %2, %3]", _target, _player, _params];
+  _actionData set [1, format ["Unassign Spotter from: %1", (_target getVariable "XK_Spotter")]];
+};
 
 _action_RemoveSpotter = ["untrackBullets","Unassign Spotter","ca\ui\data\marker_x_ca.paa",
   {     
@@ -42,7 +49,11 @@ _action_RemoveSpotter = ["untrackBullets","Unassign Spotter","ca\ui\data\marker_
     !isNil "_varCheck";
   },
   {},
-  []
+  [],
+  "",
+  5,
+  [false,false,false,false,false],
+  _modifierFunc
 ] call ace_interact_menu_fnc_createAction;
 
 ["CAManBase", 0, ["ACE_MainActions"], _action_BecomeSpotter,true] call ace_interact_menu_fnc_addActionToClass;
