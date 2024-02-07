@@ -12,7 +12,7 @@
         5: Maximum Indexes <NUMBER> (Optional) - Maximum number of array indexes in projectile tracking
 
     Example:
-        [unit1,unit2] call fn_tracking;
+        [unit1,unit2] call XK_spotting_fnc_tracking;
     
     Return Value: None
  */

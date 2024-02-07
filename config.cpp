@@ -24,7 +24,7 @@ class CfgPatches
 class CfgFunctions {
      class XK_spotting { // is tag
         class tracing { // category (doenzt matter what is if you define file)
-            file = "x\XK\addons\tracing\functions"; // defines next classes (functions will found from this location)
+            file = "functions"; // defines next classes (functions will found from this location)
             class initTrackingMod { postInit = 1; };
             class tracking {}; // located to functions and named "fn_tracking.sqf"
             class tracerDraw {}; // located to functions and named "fn_tracerDraw.sqf"
@@ -34,5 +34,5 @@ class CfgFunctions {
 
 class Extended_PreInit_EventHandlers
 {
-	class XK_spotting {init = " call compile preprocessFileLineNumbers 'x\XK\addons\spotting\functions\XK_spotter_settings.sqf'";};
+	class XK_spotting {init = " call compile preprocessFileLineNumbers 'x\XK\functions\XK_spotter_settings.sqf'";};
 };

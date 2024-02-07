@@ -4,7 +4,7 @@ private _itemClassnames = ["XK_itemClassnames"] call CBA_fnc_getSetting;
 
 addMissionEventHandler ["Draw3D", {
     if !((typeOf (vehicle player) in _vehicleClassnames || (currentWeapon player) in _itemClassnames) && cameraView == "Gunner") exitWith {};
-    [] call fn_tracerDraw;
+    [] call XK_spotting_fnc_tracerDraw;
 }];
 
 _action_BecomeSpotter = ["trackBullets","Become Spotter","a3\ui_f\data\gui\rsc\rscdisplayarsenal\binoculars_ca.paa",
@@ -13,7 +13,7 @@ _action_BecomeSpotter = ["trackBullets","Become Spotter","a3\ui_f\data\gui\rsc\r
     diag_log format ["[XK_Trace] [ACE-INTERACT] Assigned to %1 | Spotter is : %2", _target, _player];
     _target setVariable ["XK_Spotter", _player];
     _player setVariable ["XK_Spotter", _target];
-    [_target] execVM fn_tracking;
+    [_target] execVM XK_spotting_fnc_tracking;
 
     //Visual prompt
     ["ace_common_displayTextStructured", [format ["%1 is now spotting for you", name (_player getVariable "XK_Spotter")], 1.5, _target], [_target]] call CBA_fnc_targetEvent;
