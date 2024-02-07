@@ -13,12 +13,12 @@
         4: Angle <NUMBER> (Optional) - Rotation angle of icon.
     
     Examples:
-        [] call XEPKEY_fnc_tracerDraw;
+        [] call fn_tracerDraw;
     
     Return Value: None
  */
 
-XK_tracerDraw = {
+fn_tracerDraw = {
     params [["_unit",player],["_minLight",0.3],["_textSize",0.03],["_iconSize",0.3],["_ang",0]];
     private _bulletPos = _unit getVariable ["XK_bulletPosSpotter",[]];
     if (count _bulletPos == 0) exitWith {};

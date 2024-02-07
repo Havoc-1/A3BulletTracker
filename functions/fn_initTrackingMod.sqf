@@ -1,12 +1,11 @@
-[] execVM "scripts\XEPKEY\fn_tracerDraw.sqf";
+//Get setting information from fn_spotter_settings.sqf
+private _vehicleClassnames = ["XK_vehicleClassnames"] call CBA_fnc_getSetting;
+private _itemClassnames = ["XK_itemClassnames"] call CBA_fnc_getSetting;
 
 addMissionEventHandler ["Draw3D", {
-    if !(("SpottingScope" in typeOf (vehicle player) || "designator" in (currentWeapon player) || "Vector" in (currentWeapon player)) && cameraView == "Gunner") exitWith {};
-    [] call XK_tracerDraw;
+    if !((typeOf (vehicle player) in _vehicleClassnames || (currentWeapon player) in _itemClassnames) && cameraView == "Gunner") exitWith {};
+    [] call fn_tracerDraw;
 }];
-
-//Interact with scope 
-//Remove spotter only visible when spotter is active
 
 _action_BecomeSpotter = ["trackBullets","Become Spotter","a3\ui_f\data\gui\rsc\rscdisplayarsenal\binoculars_ca.paa",
   {     
@@ -14,7 +13,7 @@ _action_BecomeSpotter = ["trackBullets","Become Spotter","a3\ui_f\data\gui\rsc\r
     diag_log format ["[XK_Trace] [ACE-INTERACT] Assigned to %1 | Spotter is : %2", _target, _player];
     _target setVariable ["XK_Spotter", _player];
     _player setVariable ["XK_Spotter", _target];
-    [_target] execVM "scripts\XEPKEY\fn_tracking.sqf";
+    [_target] execVM fn_tracking;
 
     //Visual prompt
     ["ace_common_displayTextStructured", [format ["%1 is now spotting for you", name (_player getVariable "XK_Spotter")], 1.5, _target], [_target]] call CBA_fnc_targetEvent;
