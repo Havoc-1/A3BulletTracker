@@ -34,5 +34,5 @@ class CfgFunctions {
 
 class Extended_PreInit_EventHandlers
 {
-	class XK_spotting {init = " call compile preprocessFileLineNumbers 'x\XK\functions\XK_spotter_settings.sqf'";};
+	class XK_spotting {init = " call compile preprocessFileLineNumbers '\functions\XK_spotter_settings.sqf'";};
 };
