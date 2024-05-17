@@ -15,7 +15,7 @@ class CfgPatches
         url = "https://github.com/Havoc-1";
         version = 2.0;
         versionStr = "2.0.0";
-        versionAr[] = {1,0,0};
+        versionAr[] = {2,0,0};
         units[]={};
         weapons[]={};
     };

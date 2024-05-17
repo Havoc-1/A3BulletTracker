@@ -39,7 +39,7 @@ private _action_BecomeSpotter = ["trackBullets","Become Spotter","a3\ui_f\data\g
         _unit setVariable ["XK_Spotter", nil];
       };
 
-      if (_isADS && ((typeOf (vehicle player) in _vehiclesClassnames || (currentWeapon player) in _itemClassnames))) then {
+      if (_isADS && ((typeOf (vehicle player) in XK_vehicleClassnames || (currentWeapon player) in XK_itemClassnames))) then {
         addMissionEventHandler ["Draw3D", {
           private _Draw3D = player getVariable "XK_Draw3D";
           if (isNil "_Draw3D") then {
