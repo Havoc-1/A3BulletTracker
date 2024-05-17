@@ -17,7 +17,7 @@
     
     Return Value: None
  */
-
+//diag_log format ["Called XK_spotting_fnc_traceDraw by : %1",_this];
 params [["_unit",player],["_minLight",0.3],["_textSize",0.03],["_iconSize",0.3],["_ang",0]];
 private _bulletPos = _unit getVariable ["XK_bulletPosSpotter",[]];
 if (count _bulletPos == 0) exitWith {};

@@ -16,7 +16,7 @@
     
     Return Value: None
  */
-
+//diag_log format ["Called XK_spotting_fnc_tracking by : %1",_this];
 params [["_shooter",objNull],["_lifetime",5],["_int",0.02],["_maxDist",1500],["_minRange",10],["_maxIndex",25]];
 
 //Shooter Variables

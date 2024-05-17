@@ -13,8 +13,8 @@ class CfgPatches
         authors[]={"Xephros","Keystone"};
         license = "https://www.bohemia.net/community/licenses/arma-public-license-share-alike";
         url = "https://github.com/Havoc-1";
-        version = 1.0;
-        versionStr = "1.0.0";
+        version = 2.0;
+        versionStr = "2.0.0";
         versionAr[] = {1,0,0};
         units[]={};
         weapons[]={};
@@ -24,7 +24,7 @@ class CfgPatches
 class CfgFunctions {
      class XK_spotting { // is tag
         class tracing { // category (doenzt matter what is if you define file)
-            file = "functions"; // defines next classes (functions will found from this location)
+            file = "\XK_Spotting\functions"; // defines next classes (functions will found from this location)
             class initTrackingMod { postInit = 1; };
             class tracking {}; // located to functions and named "fn_tracking.sqf"
             class tracerDraw {}; // located to functions and named "fn_tracerDraw.sqf"
@@ -34,5 +34,5 @@ class CfgFunctions {
 
 class Extended_PreInit_EventHandlers
 {
-	class XK_spotting {init = " call compile preprocessFileLineNumbers '\functions\XK_spotter_settings.sqf'";};
+	class XK_spotting {init = " call compile preprocessFileLineNumbers '\XK_Spotting\functions\XK_spotter_settings.sqf'";};
 };
