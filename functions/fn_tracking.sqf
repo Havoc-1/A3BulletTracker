@@ -41,7 +41,7 @@ private _ehShooter = _shooter addEventHandler ["Fired", {
     //If Spotter Shooter pair is different, remove EH
     private _spotterPair = _spotter getVariable ["XK_Spotter",objNull];
     if (_spotterPair != _shooter) then {
-        diag_log format ["[XK_Trace] [Shooter EH] Spotter (%1) is assigned to another unit (%2), not shooter (%3), exiting EH",_spotter,_spotterPair,_shooter];
+        diag_log format ["[XK_Trace] [Shooter EH] Spotter (%1) is assigned to another unit (%2), not shooter (%3), exiting EH",name _spotter, name _spotterPair, name _shooter];
         _shooter removeEventHandler [_thisEvent, _thisEventHandler];
         _shooter setVariable ["XK_Spotter", nil];
     };
@@ -111,4 +111,4 @@ private _ehShooter = _shooter addEventHandler ["Fired", {
     diag_log "[XK_Trace] [Tracking PFH] PFH started";
     
 }];
-diag_log format ["[XK_Trace] [fn_tracking] Assigned Shooter: %1, Assigned Spotter: %2", _shooter,_shooter getVariable ["XK_Spotter",objNull]];
+diag_log format ["[XK_Trace] [fn_tracking] Assigned Shooter: %1, Assigned Spotter: %2", name _shooter, name _shooter getVariable ["XK_Spotter",objNull]];
