@@ -55,7 +55,7 @@ private _ehShooter = _shooter addEventHandler ["Fired", {
         params ["_projectile", "_hitEntity", "_projectileOwner", "_pos"];
         private _spotter = _projectileOwner getVariable "XK_Spotter";
         _spotter setVariable ["XK_Impact", (ASLToATL _pos)];
-        diag_log format ["[XK_Trace] [Projectile EH] XK_Spotter: %1, Impact Pos: %2", _spotter,_pos];
+        diag_log format ["[XK_Trace] [Projectile EH] XK_Spotter: %1, Impact Pos: %2", name _spotter,_pos];
         _projectile removeEventHandler [_thisEvent, _thisEventHandler];
     }];
 
@@ -87,7 +87,7 @@ private _ehShooter = _shooter addEventHandler ["Fired", {
                     private _bulletArray = _spotter getVariable ["XK_bulletPosSpotter",[]];
                     _bulletArray pushback _bulletPos;
                     _spotter setVariable ["XK_bulletPosSpotter",_bulletArray];
-                    diag_log format ["[XK_Trace] [Tracking PFH] bulletPos Indexes: %1, assigned to %2", count _bulletPos,_spotter];
+                    diag_log format ["[XK_Trace] [Tracking PFH] bulletPos Indexes: %1, assigned to %2", count _bulletPos, name _spotter];
                     [
                         {
                             params ["_spotter"];

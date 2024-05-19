@@ -22,7 +22,7 @@
     "",[[1, 0]]
 ] call CBA_fnc_addSetting;
 
-/* //Enable Custom Trace Colors
+//Enable Custom Trace Colors
 [
     "XK_enableColor",
     "CHECKBOX",
@@ -57,24 +57,24 @@
     ["A3BulletTracker", "Parameters"],
     [0, 1, 0.3],
     [[0,1]]
-] call CBA_fnc_addSetting; */
+] call CBA_fnc_addSetting;
 
 //Text Size
 [
     "XK_textSize",
-    "EDITBOX",
+    "SLIDER",
     ["Text Size", "Text size for impact distance. Default 0.03"],
     ["A3BulletTracker", "Parameters"],
-    "0.03",
+    [0.01, 0.1, 0.03],
     [[0,1]]
 ] call CBA_fnc_addSetting;
 
 //Icon Size
 [
     "XK_iconSize",
-    "EDITBOX",
+    "SLIDER",
     ["Icon Size", "Icon size for impact position. Default 0.3"],
     ["A3BulletTracker", "Parameters"],
-    "0.3",
+    [0.1, 1, 0.3],
     [[0,1]]
 ] call CBA_fnc_addSetting;
