@@ -111,4 +111,4 @@ private _ehShooter = _shooter addEventHandler ["Fired", {
     diag_log "[XK_Trace] [Tracking PFH] PFH started";
     
 }];
-diag_log format ["[XK_Trace] [fn_tracking] Assigned Shooter: %1, Assigned Spotter: %2", name _shooter, name _shooter getVariable ["XK_Spotter",objNull]];
+diag_log format ["[XK_Trace] [fn_tracking] Assigned to %1 | Spotter is : %2", name _shooter, name (_shooter getVariable ["XK_Spotter",objNull])];

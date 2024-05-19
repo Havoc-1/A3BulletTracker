@@ -28,6 +28,7 @@ class CfgFunctions {
             class initTrackingMod { postInit = 1; };
             class tracking {}; // located to functions and named "fn_tracking.sqf"
             class tracerDraw {}; // located to functions and named "fn_tracerDraw.sqf"
+            class opticsSwitch {}; // located to functions and named "fn_opticsSwitch.sqf"
         };
     };
 };
