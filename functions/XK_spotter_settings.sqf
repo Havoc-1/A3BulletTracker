@@ -10,7 +10,7 @@
     "EDITBOX", 
     ["Vehicle Classnames", "Classnames of 'vehicles' that can trace bullets | Separate using , - no need for quotation marks"], 
     ["A3BulletTracker","Classnames"], 
-    "",[[1, 0]]
+    "ACE_SpottingScopeObject",[[1, 0]]
 ] call CBA_fnc_addSetting;
 
 //Binocular item class names
@@ -19,7 +19,7 @@
     "EDITBOX", 
     ["Item Classnames", "Classnames of 'items' that can trace bullets | Separate using , - no need for quotation marks"], 
     ["A3BulletTracker","Classnames"], 
-    "",[[1, 0]]
+    "ACE_Vector, ACE_VectorDay",[[1, 0]]
 ] call CBA_fnc_addSetting;
 
 //Enable Custom Trace Colors

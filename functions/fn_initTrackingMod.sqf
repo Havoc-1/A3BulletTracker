@@ -57,6 +57,7 @@ _action_RemoveSpotter = ["untrackBullets","Unassign Spotter",["ca\ui\data\marker
     _target setVariable ["XK_Interval",nil];
     _target setVariable ["XK_maxDist",nil];
     _target setVariable ["XK_minRange",nil];
+    _player setVariable ["XK_Spotter",nil];
     _player setVariable ["XK_Impact",nil];
     _player setVariable ["XK_bulletPosSpotter",nil];
     _player setVariable ["XK_OpticsSwitch",nil];
