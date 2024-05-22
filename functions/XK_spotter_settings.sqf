@@ -49,6 +49,15 @@
     true,[[1,0]]
 ] call CBA_fnc_addSetting;
 
+//Enable Tracing under NVG
+[
+    "XK_traceNVG",
+    "CHECKBOX",
+    ["Enable NVG Tracing", "Allows bullet tracing under nightvision goggles while below minimum light threshold."],
+    ["A3BulletTracker", "Parameters"],
+    true,[[1,0]]
+] call CBA_fnc_addSetting;
+
 //Minimum Light Threshold
 [
     "XK_minLight",

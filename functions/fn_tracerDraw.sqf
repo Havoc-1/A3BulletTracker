@@ -30,6 +30,7 @@ private _text = format ["%1m",round (player distance _pos)];
 //Draw Bullet Trajectory and Impact
 drawIcon3D ["\A3\ui_f\data\map\markers\military\circle_CA.paa", _color, _pos, _iconSize, _iconSize, _ang, _text, 0, _textSize, "TahomaB","center",true,0,0.003];
 if ((((getLighting select 1)/10) < _minLight) && XK_enableMinLight) exitWith {};
+if ((((getLighting select 1)/10) < _minLight) && !XK_traceNVG && (currentVisionMode player = 1)) exitWith {};
 {
     private _indexes = _x;
     {
