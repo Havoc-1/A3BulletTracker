@@ -11,7 +11,7 @@ diag_log format ["[XK_Trace] [Init] Vehicle Classnames: %1",XK_vehicleClassnames
 private _action_BecomeSpotter = ["trackBullets","Become Spotter","a3\ui_f\data\gui\rsc\rscdisplayarsenal\binoculars_ca.paa",
   {     
     params ["_shooter", "_spotter", "_params"];
-    diag_log format ["[XK_Trace] [ACE-INTERACT] Assigned to %1 | Spotter is : %2", name _shooter, name _spotter];
+    if (XK_debug) then {diag_log format ["[XK_Trace] [ACE-INTERACT] Assigned to %1 | Spotter is : %2", name _shooter, name _spotter]};
     _shooter setVariable ["XK_Spotter", _spotter];
     _spotter setVariable ["XK_Spotter", _shooter];
     [_shooter] call XK_spotting_fnc_tracking;
@@ -34,7 +34,7 @@ private _action_BecomeSpotter = ["trackBullets","Become Spotter","a3\ui_f\data\g
 //To show who your unassigning yourself from
 private _removeSpotterModifier = {
   params ["_target", "_player", "_params", "_actionData"];
-  diag_log format ["[XK_TRACE] [ACE-SELF] [%1, %2, %3]", _target, _player, _params];
+  if (XK_debug) then {diag_log format ["[XK_TRACE] [ACE-SELF] [%1, %2, %3]", _target, _player, _params]};
   _actionData set [1, format ["Stop spotting for: %1", name (_target getVariable "XK_Spotter")]];
 };
 
@@ -42,7 +42,7 @@ private _removeSpotterModifier = {
 _action_RemoveSpotter = ["untrackBullets","Unassign Spotter",["ca\ui\data\marker_x_ca.paa","#FF0000"], 
   {     
     params ["_target", "_player", "_params"];
-    diag_log format ["[XK_Trace] [ACE-INTERACT] Unassigned from: %1", name _target];    
+    if (XK_debug) then {diag_log format ["[XK_Trace] [ACE-INTERACT] %1 unassigned from shooter: %1", _player getVariable "XK_Spotter"]};    
     
     //Visual prompt
     ["ace_common_displayTextStructured", [format ["You are no longer spotting for %1", name (_target getVariable "XK_Spotter")], 1.5, _player], [_player]] call CBA_fnc_targetEvent;
@@ -50,7 +50,7 @@ _action_RemoveSpotter = ["untrackBullets","Unassign Spotter",["ca\ui\data\marker
     //Remove OpticsSwitch EH from Spotter
     private _OpticsSwitchEH = _player getVariable "XK_OpticsSwitch";
     if !(isNil "_OpticsSwitchEH") then {_player removeEventHandler _OpticsSwitchEH};
-    diag_log format ["[XK_Trace] [ACE-INTERACT] Removed OpticsSwitchEH from: %1, EH: %2", name _player, _OpticsSwitchEH];  
+    if (XK_debug) then {diag_log format ["[XK_Trace] [ACE-INTERACT] Removed OpticsSwitchEH from: %1, EH: %2", name _player, _OpticsSwitchEH]};  
 
     _target setVariable ["XK_Spotter",nil];
     _target setVariable ["XK_Lifetime",nil];
