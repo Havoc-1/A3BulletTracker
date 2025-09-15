@@ -14,7 +14,7 @@ With Arma's engine limitation in view distance and particle rendering at extende
 
 ## Features
 
-- **Real-time Bullet Tracking**: Visualize bullet trajectories as they travel until impact
+- **Bullet Tracking Trace Upon Impact**: Traced bullet trajectory upon bullet impact.
 - **Impact Point Marking**: 3D Icon with indication of where bullets impact with distance
 - **Spotter-Shooter Pairing**: System allows players to pair up as spotter and shooter
 
@@ -43,7 +43,6 @@ Required addons:
 - Additional binoculars and "turrets" can be added through CBA settings
 
 ### Settings
-Access mod settings through: \
 `Configure Addons` → `XK Bullet Tracing for Spotters`
 
 Available settings include:
@@ -58,20 +57,16 @@ Available settings include:
 ## Script Version
 A standalone version which allows you to use the mod WITHOUT the server or players subscribing to it.
 
-## Known Issues
-- Traces may not be as visible in extreme low-light conditions unless NVG tracing is enabled
-- Performance impact may vary based on number of active traces and settings
 ## Support
-
 For issues, questions, or suggestions:
 - Open an issue on GitHub
 - Visit our Steam Workshop page [link]
-## Authors
 
+## Authors
 - [@Paperboathat](https://github.com/Paperboathat)
 - [@Havoc-1](https://github.com/Havoc-1)
-## Acknowledgements
 
+## Acknowledgements
 - prisoner._. fromArma 3 Script & Goodies to building the mod in HEMTT
 - ACE3 Team - Framework
 - CBA Team - Settings framework
