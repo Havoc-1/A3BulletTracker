@@ -17,7 +17,6 @@ With Arma's engine limitation in view distance and particle rendering at extende
 - **Bullet Tracking Trace Upon Impact**: Traced bullet trajectory upon bullet impact.
 - **Impact Point Marking**: 3D Icon with indication of where bullets impact with distance
 - **Spotter-Shooter Pairing**: System allows players to pair up as spotter and shooter
-
 - **Customizable Visualization**:
   - Adjustable trace colors
   - Configurable text and icon sizes
@@ -26,6 +25,7 @@ With Arma's engine limitation in view distance and particle rendering at extende
 - **Vehicle Integration**: Support for custom binoculars / turrets (spotting scopes)
 - **Performance Optimized**: Efficient tracking system with configurable maximum tracking distance and update intervals
 - **CBA Settings Integration**: Full customization through CBA settings menu
+
 ## Dependencies
 Required addons:
 - CBA (Community Base Addons)
