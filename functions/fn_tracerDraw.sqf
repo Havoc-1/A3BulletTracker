@@ -17,21 +17,21 @@
     
     Return Value: None
  */
-diag_log format ["Called XK_spotting_fnc_traceDraw by : %1",_this];
-params [["_unit",player],["_minLight",0.3],["_textSize",0.03],["_iconSize",0.3],["_ang",0]];
+
+params [["_unit",player],["_color",[1,1,0,1]],["_minLight",0.3],["_textSize",0.03],["_iconSize",0.3],["_enableMinLight",true],["_traceNVG",false],["_ang",0]];
 private _bulletPos = _unit getVariable ["XK_bulletPosSpotter",[]];
 if (count _bulletPos == 0) exitWith {};
 
 //Get Bullet Impact position
 private _pos = _unit getVariable "XK_Impact";
 if (isNil "_pos") exitWith {};
-private _light = (getLighting select 1)/10;
-private _color = [(getLighting select 0 select 0),(getLighting select 0 select 1),(getLighting select 0 select 2),_light];
 private _text = format ["%1m",round (player distance _pos)];
 
 //Draw Bullet Trajectory and Impact
 drawIcon3D ["\A3\ui_f\data\map\markers\military\circle_CA.paa", _color, _pos, _iconSize, _iconSize, _ang, _text, 0, _textSize, "TahomaB","center",true,0,0.003];
-if (_light < _minLight) exitWith {};
+private _light = (getLighting select 1)/10;
+if ((_light < _minLight) && _enableMinLight && (currentVisionMode player == 0)) exitWith {/* diag_log format ["[XK_Trace] [fn_tracerDraw] Light level is too low (Minimum: %1 | Current: %2). Exiting trace.", _minLight, _light] */};
+if ((_light < _minLight) && !_traceNVG && (currentVisionMode player == 1)) exitWith {/* diag_log "[XK_Trace] [fn_tracerDraw] NVG Tracing is not enabled. Exiting trace." */};
 {
     private _indexes = _x;
     {
