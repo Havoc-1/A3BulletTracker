@@ -1,0 +1,10 @@
+[default]
+workshop = [
+    "450814997", # CBA_A3
+    "463939057", # ACE3
+]
+parameters = [
+    "-skipIntro",
+    "-noSplash",
+    "-showScriptErrors",
+]

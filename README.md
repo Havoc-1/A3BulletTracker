@@ -1,74 +1,35 @@
-# Bullet Tracing For Spotter 
-Recursive bullet tracing for spotters when sniping
+# Spotter Bullet Tracker
 
-Built for Arma 3 and requires ACE and CBA_A3
+A lightweight bullet vapor trail mod for Arma 3. Spotters can see bullet condensation trails through binoculars, rangefinders, and spotting scopes.
 
-## Description
-With Arma's engine limitation in view distance and particle rendering at extended ranges and making it increasingly difficult to spot for snipers to determine impact. BTFS aims to address this by converting the BIS_fnc_traceBullets function as seen in the Virtual Arsenal  to be multiplayer compatible. In order to maintain balance and immersion while still being functional, **a spotter can only spot for 1 shooter**.
+Inspired by [A3BulletTracker](https://github.com/Havoc-1/A3BulletTracker) by Xeph and Keystone.
 
+## Requirements
 
-
-
-
-
+- [CBA_A3](https://steamcommunity.com/sharedfiles/filedetails/?id=450814997)
+- [ACE3](https://steamcommunity.com/sharedfiles/filedetails/?id=463939057)
 
 ## Features
 
-- **Bullet Tracking Trace Upon Impact**: Traced bullet trajectory upon bullet impact.
-- **Impact Point Marking**: 3D Icon with indication of where bullets impact with distance
-- **Spotter-Shooter Pairing**: System allows players to pair up as spotter and shooter
-- **Customizable Visualization**:
-  - Adjustable trace colors
-  - Configurable text and icon sizes
-  - Light level dependent visibility
-  - NVG compatibility options
-- **Vehicle Integration**: Support for custom binoculars / turrets (spotting scopes)
-- **Performance Optimized**: Efficient tracking system with configurable maximum tracking distance and update intervals
-- **CBA Settings Integration**: Full customization through CBA settings menu
+- Live bullet vapor wake that drifts with wind.
+- 3D impact marker with real-time target distance reading upon bullet impact.
+- Works out of the box with binoculars, rangefinders, laser designators, and tripod spotting scopes (including ACE).
+- Simple 1-to-1 sniper and spotter pairing via ACE interaction.
+- Ambient light check so vapor trails do not glow in pitch black night unless you are on NVGs or thermals.
+- Zero dedicated server performance hit. All code runs client-side between the shooter and spotter, and only renders when ADS through optics.
+- Configurable active trace limit to keep performance smooth during rapid fire.
 
-## Dependencies
-Required addons:
-- CBA (Community Base Addons)
-- ACE3 (Advanced Combat Environment 3)
-## User Setup
-1. Approach another player
-2. Use the ACE interaction menu on them (default: Windows key)
-3. Select "Become Spotter" to pair with that player
-4. Use a compatible spotting device (see below)
+## Usage
 
-## Mission Maker setup
-## Compatible Equipment
-- Default: ACE Spotting Scope
-- Default Binoculars: ACE Vector, ACE Vector Day
-- Additional binoculars and "turrets" can be added through CBA settings
+1. Walk up to a friendly player, open ACE Interact (Windows key), and select "Become Spotter".
+2. Look down your binoculars or spotting scope. When your shooter fires, you will see their bullet vapor trails and impact distance marker.
+3. To unpair, open ACE Self-Interact (Ctrl + Windows key) and select "Stop Spotting".
+4. Adjust trail color, opacity, lifetime, active trace limits, impact marker settings, and light thresholds in CBA Addon Options (`Esc -> Options -> Addon Options -> Spotter Bullet Tracker`).
 
-### Settings
-`Configure Addons` → `XK Bullet Tracing for Spotters`
+## Documentation
 
-Available settings include:
-- Vehicle and item classnames
-- Trace color customization
-- Minimum light threshold
-- Text and icon sizes
-- NVG compatibility options
-- Debug mode
+For technical architecture, network protocol, and codebase maintenance, see [MAINTENANCE.md](MAINTENANCE.md).
 
-
-## Script Version
-A standalone version which allows you to use the mod WITHOUT the server or players subscribing to it.
-
-## Support
-For issues, questions, or suggestions:
-- Open an issue on GitHub
-- Visit our Steam Workshop page [link]
-
-## Authors
-- [@Paperboathat](https://github.com/Paperboathat)
-- [@Havoc-1](https://github.com/Havoc-1)
-
-## Acknowledgements
-- prisoner._. fromArma 3 Script & Goodies to building the mod in HEMTT
-- ACE3 Team - Framework
-- CBA Team - Settings framework
 ## License
-This project is licensed under the Arma Public License Share Alike (APL-SA) - see the [Bohemia Interactive Community License page](https://www.bohemia.net/community/licenses/arma-public-license-share-alike) for details.
+
+MIT

@@ -1,0 +1,10 @@
+PREP(becomeSpotter);
+PREP(checkOptics);
+PREP(draw3D);
+PREP(handlePairRequest);
+PREP(handleUnpair);
+PREP(initInteractions);
+PREP(onFired);
+PREP(parseClassList);
+PREP(receiveTrace);
+PREP(stopSpotting);

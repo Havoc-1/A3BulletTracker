@@ -1,0 +1,9 @@
+name = "Spotter Bullet Tracker";
+author = "VIVbeam / v.s.k9";
+tooltip = "Spotter Bullet Tracker";
+tooltipOwned = "Spotter Bullet Tracker";
+overview = "Bullet vapor trail and spotting mod for Arma 3.";
+actionName = "Original Mod";
+action = "https://github.com/Havoc-1/A3BulletTracker";
+hideName = 0;
+hidePicture = 0;

@@ -1,0 +1,19 @@
+name = "Spotter Bullet Tracker"
+prefix = "sbt"
+mainprefix = "z"
+author = "VIVbeam / v.s.k9"
+
+[version]
+major = 1
+minor = 0
+patch = 0
+build = 0
+git_hash = 0
+
+[files]
+include = [
+    "mod.cpp",
+    "README.md",
+    "MAINTENANCE.md",
+    "LICENSE"
+]
