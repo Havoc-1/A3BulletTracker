@@ -2,6 +2,7 @@
 
 A lightweight bullet vapor trail mod for Arma 3. Spotters can see bullet condensation trails through binoculars, rangefinders, and spotting scopes.
 
+Major overhaul and rewrite written by Viv. 
 Inspired by [A3BulletTracker](https://github.com/Havoc-1/A3BulletTracker) by Xeph and Keystone.
 
 ## Requirements
